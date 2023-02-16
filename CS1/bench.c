@@ -3,7 +3,7 @@
 
 #define ASIZE 2048
 #define STEP    10
-#define ITERS   12800
+#define ITERS   128000   //PRH : Changing the iter count from 12800 to 128000
 
 __attribute__ ((noinline))
 int loop(int zero) {

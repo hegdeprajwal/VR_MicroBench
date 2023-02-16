@@ -3,7 +3,7 @@
 
 #define ASIZE 2048
 #define STEP   128
-#define ITERS (40960*8)
+#define ITERS (40960*16) //Changing from 8 to 16
 
 __attribute__ ((noinline))
 int loop(int zero) {

@@ -4,7 +4,7 @@
 
 #define ASIZE 2048
 #define STEP   256
-#define ITERS   800
+#define ITERS 8000 //Changing the value from 800 to 8000
 
 int arr[ASIZE];
 

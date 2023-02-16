@@ -4,7 +4,7 @@
 
 #define ASIZE  1024
 #define STEP    128
-#define ITERS    64
+#define ITERS   128 //Changing from 64 to 128
 
 float arrA[ASIZE];
 float arrB[ASIZE];

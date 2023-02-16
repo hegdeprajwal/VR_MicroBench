@@ -5,7 +5,7 @@
 
 #define ASIZE 2048
 #define STEP   128
-#define ITERS    2
+#define ITERS   32  //PRH :: Changed value from 2 to 32
 #define LEN  32768
 
 int arr[ASIZE];
