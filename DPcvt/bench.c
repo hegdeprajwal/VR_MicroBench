@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE  1024
-#define STEP    128
-#define ITERS     400
+#define ASIZE  8192
+#define ITERS   128
 
 float arrA[ASIZE];
 float arrB[ASIZE];
@@ -13,8 +12,8 @@ float loop(int zero) {
   int i, iters;
   float t1;
 
-  for(iters=zero; iters < ITERS; iters+=1) {
-    for(i=zero; i < ASIZE; i+=1) {
+  for(iters=0; iters < ITERS; iters+=1) {
+    for(i=0; i < ASIZE; i+=1) {
       arrA[i]=arrA[i]*3.2;
     }
     t1+=arrA[ASIZE-1];

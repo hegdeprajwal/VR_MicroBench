@@ -2,8 +2,7 @@
 #include "randArr.h"
 #include "common.h"
 
-#define ASIZE 2048
-#define STEP   256
+#define STEP    256
 #define ITERS  1024 
 
 __attribute__ ((noinline))

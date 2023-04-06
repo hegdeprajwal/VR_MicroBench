@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 2048
-#define STEP  1024
-#define ITERS   16000
-// PRH : Modified the iters from 160 to 16000
+#define ASIZE   2048
+#define STEP    1024
+#define ITERS   1024
 
 int arr[ASIZE];
 

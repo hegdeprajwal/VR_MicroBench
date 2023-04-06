@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 2048
 #define STEP   128
-#define ITERS   20
+#define ITERS   16
 
 __attribute__ ((noinline))
 int rec(int i){

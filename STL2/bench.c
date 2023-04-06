@@ -3,11 +3,10 @@
 
 #include "common.h"
 
-#define ASIZE 65536
-#define STEP    128
-#define ITERS  65536 
-#define ITER2  128      //Added by PRH
-#define LEN    2048
+#define ASIZE   65536
+#define ITERS   65536
+#define ITER2   16 
+#define LEN     2048
 
 
 typedef struct dude {
@@ -20,15 +19,16 @@ dude arr[ASIZE];
 __attribute__ ((noinline))
 int loop(int zero) {
   for ( int i = 0 ; i < ITER2; i++) {
-      int count=0;
-      unsigned lfsr = 0xACE1u;
-      do
-      {
-          /* taps: 16 14 13 11; feedback polynomial: x^16 + x^14 + x^13 + x^11 + 1 */
-          lfsr = (lfsr >> 1) ^ (-(lfsr & 1u) & 0xB400u);    
-          arr[lfsr].p1 = lfsr;
-      } while(++count < ITERS);
-      //} while(lfsr != 0xACE1u);
+    int count=0;
+
+    unsigned lfsr = 0xACE1u;
+    do
+    {
+        /* taps: 16 14 13 11; feedback polynomial: x^16 + x^14 + x^13 + x^11 + 1 */
+        lfsr = (lfsr >> 1) ^ (-(lfsr & 1u) & 0xB400u);    
+        arr[lfsr].p1 = lfsr;
+    } while(++count < ITERS);
+    //} while(lfsr != 0xACE1u);
   }
   return arr[zero].p1;
 }

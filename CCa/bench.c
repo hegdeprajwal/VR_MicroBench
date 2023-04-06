@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 2048
 #define STEP   256
 #define ITERS 2048 
 

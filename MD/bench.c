@@ -3,10 +3,10 @@
 
 #include "common.h"
 
-#define ASIZE 2048
+#define ASIZE  2048
 #define STEP   128
 #define ITERS  1024 
-#define LEN   2048
+#define LEN    2048
 
 int arr[ASIZE];
 

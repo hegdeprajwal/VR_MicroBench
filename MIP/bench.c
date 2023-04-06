@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 2048
-#define STEP   128
+#define ASIZE    2048
+#define STEP     128
 #define ITERS    400
 
 __attribute__ ((noinline))

@@ -3,10 +3,9 @@
 
 #include "common.h"
 
-#define ASIZE  65536
-#define STEP     128
-#define ITERS    (65536 * 16)  //changing from 8 to 16
-#define LEN     2048
+#define ASIZE    65536
+#define ITERS    (65536 * 8)
+#define LEN      2048
 
 
 typedef struct dude {

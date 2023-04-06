@@ -2,8 +2,7 @@
 #include "common.h"
 
 #define ASIZE  8192
-#define STEP    128
-#define ITERS    32  //PRH :: Changed from 16 to 32
+#define ITERS   128 
 
 float arrA[ASIZE];
 float arrB[ASIZE];
@@ -13,8 +12,8 @@ float loop(int zero) {
   int i, iters;
   float t1;
 
-  for(iters=zero; iters < ITERS; iters+=1) {
-    for(i=zero; i < ASIZE; i+=1) {
+  for(iters=0; iters < ITERS; iters+=1) {
+    for(i=0; i < ASIZE; i+=1) {
       arrA[i]=arrA[i]*3.2f + arrB[i];
     }
     t1+=arrA[ASIZE-1];

@@ -3,10 +3,9 @@
 
 #include "common.h"
 
-#define ASIZE 2048
-#define STEP   128
-#define ITERS   32   // PRH :: Changing the value from 2 to 32
-#define LEN  32768
+#define ASIZE  2048
+#define ITERS  8
+#define LEN    32768
 
 int arr[ASIZE];
 

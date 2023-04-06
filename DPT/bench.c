@@ -2,23 +2,21 @@
 #include "common.h"
 #include "math.h"
 
-#define ASIZE  1024
-#define STEP    128
-#define ITERS   128 //Changing from 64 to 128
+#define ASIZE  8192
+#define ITERS   128
 
 float arrA[ASIZE];
 float arrB[ASIZE];
 
 __attribute__ ((noinline)) 
 float loop(int zero) {
-  int i, iters;
-  float t1;
+  float t1 = zero * zero + zero + 1 ;
 
-  for(iters=zero; iters < ITERS; iters+=1) {
-    for(i=zero; i < ASIZE; i+=1) {
-      arrA[i]=sin(arrA[i]);
+  for(int iters=0; iters < ITERS; iters+=1) {
+    for(int i=0; i < ASIZE; i+=1) {
+      arrB[i] = (arrA[i])/t1 ;
     }
-    t1+=arrA[ASIZE-1];
+    t1 += arrB[ASIZE-1];
   }
 
   return t1;

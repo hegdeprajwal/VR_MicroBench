@@ -2,9 +2,8 @@
 #include "randArr.h"
 #include "common.h"
 
-#define ASIZE 2048
 #define STEP   128
-#define ITERS  4800 
+#define ITERS  4096 
 
 __attribute__ ((noinline))
 int loopy_helper(int i,int zero){

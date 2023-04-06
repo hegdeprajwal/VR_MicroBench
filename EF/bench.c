@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 2048
-#define STEP   128
-#define ITERS 409600
-
+#define ITERS 16384
 
 __attribute__((optimize("no-unroll-loops")))
 float loop(int zero) {

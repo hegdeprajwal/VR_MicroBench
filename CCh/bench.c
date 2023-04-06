@@ -2,9 +2,8 @@
 #include "randArr.h"
 #include "common.h"
 
-#define ASIZE     0
-#define STEP  16384
-#define ITERS     80
+#define STEP   16384
+#define ITERS     64
 
 __attribute__ ((noinline))
 int loop(int zero) {

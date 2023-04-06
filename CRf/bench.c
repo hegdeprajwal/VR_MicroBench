@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 2048
-#define STEP   128
-#define ITERS   32 //changing from 24 to 64
- 
+#define STEP    128
+#define ITERS   25
+
 __attribute__ ((noinline))
 int fib(int i ){
   if(i==0) return 0;

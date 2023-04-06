@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 131072
+#define ASIZE    131072
 #define STEP     512
-#define ITERS    8192 //changed from 256 to 8192
+#define ITERS    4096
 
 int arr[ASIZE];
 

@@ -21,7 +21,7 @@ $(DIRS):
 	$(MAKE) $(PARENT) -C $@
 
 clean:
-	rm -f */bench.X86
-	rm -f */bench.ARM
+	rm -f */bench.X86 
+	rm -f */bench.ARM */*.ARM  */bench*.asm
 	rm -f */bench.RISCV
 	rm -f */randArr.h 

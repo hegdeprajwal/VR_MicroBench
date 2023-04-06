@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 2048
 #define STEP    30
-#define ITERS 1024 
+#define ITERS   1024 
 
 __attribute__ ((noinline))
 int loop(int zero) {

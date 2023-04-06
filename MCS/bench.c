@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE (65536*4)
+#define ASIZE  (65536*4)
 #define STEP   1280
+#define ITER   1
 
 
 float arr[ASIZE];
@@ -19,18 +20,20 @@ float arr9[ASIZE];
 __attribute__ ((noinline)) 
 float loop3(int zero) {
   float f = 0;
-  for(int i = 0; i < ASIZE; i+=1) {
-    int ind=i&(STEP-1);
-    arr1[ind]=i;
-    arr2[ind]=i;
-    arr3[ind]=i;
-    arr4[ind]=i;
-    arr5[ind]=i;
-    arr6[ind]=i;
-    arr7[ind]=i;
-    arr8[ind]=i;
-    arr9[ind]=i;
-    //f=f*f*f*f*f*f*f*f*f*f*f;
+  for (int k = 0 ; k < ITER; k++) {
+    for(int i = 0; i < ASIZE; i+=1) {
+      int ind=i&(STEP-1);
+      arr1[ind]=i;
+      arr2[ind]=i;
+      arr3[ind]=i;
+      arr4[ind]=i;
+      arr5[ind]=i;
+      arr6[ind]=i;
+      arr7[ind]=i;
+      arr8[ind]=i;
+      arr9[ind]=i;
+      //f=f*f*f*f*f*f*f*f*f*f*f;
+    }
   }
   return f;
 }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "common.h"
-#define ASIZE 65536
+#define ASIZE  65536
 #define STEP   128
 #define ITERS  4096
 

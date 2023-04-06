@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include "common.h"
 
-#define ASIZE 32768
-#define STEP   128
-#define ITERS 16
+#define ASIZE   32768
+#define STEP    128
+#define ITERS   16
 
-
-float arr[ASIZE];
-float arr1[ASIZE];
+float arr1[ASIZE]; //each of 128 KB 
 float arr2[ASIZE];
 float arr3[ASIZE];
 float arr4[ASIZE];
@@ -21,7 +19,6 @@ __attribute__ ((noinline))
 float loop3(int zero) {
   float f = 0;
   for ( int j= 0; j < ITERS; j++) {
-
     for(int i = 0; i < ASIZE; i+=1) {
       int ind=i&(STEP-1);
       f+=arr1[ind];
@@ -41,10 +38,6 @@ float loop3(int zero) {
 
 int main(int argc, char* argv[]) {
    argc&=10000;
-   //loop0(argc);
-   //loop1(argc);
-   //loop2(argc);
-
    ROI_BEGIN(); 
    float f =loop3(argc);
    ROI_END();

@@ -2,7 +2,7 @@ include ../make.config
 
 CC_X86?=gcc
 #CC_ARM?=arm-linux-gnueabi-gcc
-CC_ARMC?=gcc
+CC_ARMC?=gcc -ffp-contract=fast
 CC_RISCV?=~/opt/riscv/bin/riscv64-unknown-elf-gcc
 OPT?=-O3
 
@@ -11,11 +11,11 @@ CFLAGS+=${OPT} -I../
 
 default: benchX86
 
-all: benchX86 benchARM benchRISCV
+all: ARM  X86
 
-X86: benchX86
+X86: $(BINS_X86)
 
-ARM: benchARM
+ARM: $(BINS_ARM)
 
 RISCV: benchRISCV
 
@@ -30,14 +30,15 @@ else
 pre_req:
 endif
 
-benchX86: bench.c pre_req
-	${CC_X86} ${CFLAGS} -DMAGIC bench.c --static --std=c99  -lm -o bench.X86
+%.X86: %.c pre_req
+	$(CC_X86) $(CFLAGS) $< --static --std=c99 -lm -o $@
 
-benchARM: bench.c pre_req
-	${CC_ARM} ${CFLAGS} bench.c --static --std=c99 -lm -o bench.ARM
+%.ARM: %.c pre_req
+	$(CC_ARM) $(CFLAGS) $< --static -ffp-contract=fast --std=c99 -lm -o $@
 
 benchRISCV: bench.c pre_req
 	${CC_RISCV} ${CFLAGS} bench.c --static --std=c99 -lm -o bench.RISCV
 
 clean:
-	rm -f bench.X86 bench.ARM bench.RISCV
+	rm -f *.X86 *.ARM *.RISCV *.asm *.ASM
+	rm -rf perf_output

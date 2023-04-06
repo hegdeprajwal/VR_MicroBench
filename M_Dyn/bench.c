@@ -3,11 +3,11 @@
 
 #include "common.h"
 
-#define AMULT 65536
+#define AMULT    65536
 #define ASIZE    32
-#define AMASK (ASIZE-1)
-#define ITERS  (4096*64)
-#define ITER2  4 //PRH :: Adding this to increase the instruction count
+#define AMASK    (ASIZE-1)
+#define ITERS    (4096*64)
+#define ITER2    2 
 
 
 int arr1[ASIZE*AMULT];
@@ -28,16 +28,16 @@ int loop(int zero) {
       do
       {
           /* taps: 16 14 13 11; feedback polynomial: x^16 + x^14 + x^13 + x^11 + 1 */
-          lfsr = (lfsr >> 1) ^ (-(lfsr & 1u) & 0xB400u);    
+          lfsr = (lfsr >> 1) ^ (-(lfsr & 1u) & 0xB400u);
           acc1 += arr1[(lfsr&AMASK)*AMULT];
 
-          //printf("write %d, ",lfsr&AMASK);      
+          //printf("write %d, ",lfsr&AMASK);
 
           lfsr2 = (lfsr2 >> 1) ^ (-(lfsr2 & 1u) & 0xB400u);
           acc2+=1;
           arr1[(lfsr2&AMASK)*AMULT]=acc2;
-    
-          //printf("read %d\n",lfsr&AMASK);      
+
+          //printf("read %d\n",lfsr&AMASK);
       } while(++count < ITERS);
       //} while(lfsr != 0xACE1u);
   }
@@ -47,9 +47,8 @@ int loop(int zero) {
 
 int main(int argc, char* argv[]) {
    argc&=10000;
-   ROI_BEGIN(); 
-   int t=loop(argc); 
+   ROI_BEGIN();
+   int t=loop(argc);
    ROI_END();
    volatile int a = t;
 }
-
