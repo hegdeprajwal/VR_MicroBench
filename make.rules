@@ -2,12 +2,18 @@ include ../make.config
 
 CC_X86?=gcc
 #CC_ARM?=arm-linux-gnueabi-gcc
-CC_ARMC?=gcc -ffp-contract=fast
+CC_ARMC?=gcc
 CC_RISCV?=~/opt/riscv/bin/riscv64-unknown-elf-gcc
 OPT?=-O3
 
-#-fno-tree-vectorize 
+#-fno-tree-vectorize
 CFLAGS+=${OPT} -I../
+ARM_CFLAGS?=--static -ffp-contract=fast
+
+GCC_VER := $(shell gcc -dumpversion)
+ifeq ($(shell expr $(GCC_VER) \>= 10), 1)
+ARM_CFLAGS += -march=armv8-a+sve2 -msve-vector-bits=128
+endif
 
 default: benchX86
 
@@ -34,7 +40,7 @@ endif
 	$(CC_X86) $(CFLAGS) $< --static --std=c99 -lm -o $@
 
 %.ARM: %.c pre_req
-	$(CC_ARM) $(CFLAGS) $< --static -ffp-contract=fast --std=c99 -lm -o $@
+	$(CC_ARMC) $(CFLAGS) $(ARM_CFLAGS) $< --std=c99 -lm -o $@
 
 benchRISCV: bench.c pre_req
 	${CC_RISCV} ${CFLAGS} bench.c --static --std=c99 -lm -o bench.RISCV
