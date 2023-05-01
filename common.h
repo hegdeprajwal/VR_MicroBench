@@ -23,24 +23,24 @@
     _exit(0)
 #else // Ignore this for now -- put working timing code here
 #define ROI_BEGIN() \
-    ticks _Time0, _Time1; \
-    _Time0 = _ClockGetTime();
+    clock_t start, end;\
+    start = clock();
 #define ROI_END() \
-    _Time1 = _ClockGetTime(); \
-    printf("_ticks: %llu\n",_Time1 - _Time0);
+    end = clock(); \
+    double duration = ((double)end - start)/CLOCKS_PER_SEC;\
+    printf("_ticks: %f s\n",duration);
 
-#include <time.h>
+#include <time.h>>
 
 
-
-typedef unsigned long long ticks;
-static inline __attribute__((always_inline)) ticks _ClockGetTime()
-{
-  //return -1;
-  //struct timespec ts;
-  //clock_gettime(CLOCK_REALTIME, &ts);
-  //return (ticks)(ts.tv_sec) * 1000000LL + (ticks)(ts.tv_nsec) / 1000LL;
-}
+// typedef unsigned long long ticks;
+// static inline __attribute__((always_inline)) ticks _ClockGetTime()
+// {
+//   //return -1;
+//   //struct timespec ts;
+//   //clock_gettime(CLOCK_REALTIME, &ts);
+//   //return (ticks)(ts.tv_sec) * 1000000LL + (ticks)(ts.tv_nsec) / 1000LL;
+// }
 
 #endif // NO MAGIC
 
